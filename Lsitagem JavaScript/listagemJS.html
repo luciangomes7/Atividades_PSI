@@ -5,14 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Item</title>
 <style>
-    #divblue{background-color: #33ccff;width: 80%; float: left; height: 50% ;padding-left: 40%;}
+    #divblue{background-color: #33ccff;  height: 50% ;padding: 40%;text-align: center; }
 </style>
 
 </head>
 <body>
     <div id="divblue">
+        <input type="text" size="35" id="entrada" placeholder="Item a adiconar na lista"><br>
+    <button onclick="inserir()">Adicionar</button>
+    <button onclick="listar()">Listar</button>
+    <button onclick="limpar()">Limpar</button>
+    <button onclick="apagar()">Apagar</button>
+    <h1>Lista de Compras</h1>
+
+    <ul id="lista">
         
-        <h1>Lista de Compras</h1>
+    </ul>
+
+    <script>
+
+    var listaUL = document.getElementById("lista");
+    var listaCompras = [];
+
+        function inserir(){
+            var textoEntrada = document.getElementById("entrada").value;
+            listaUL.innerHTML += "<li>"+textoEntrada+"</li>";
+            listaCompras.push(textoEntrada);
+
+        }
+        function limpar(){
+            listaUL.innerHTML = "";
+        }
+
+        function listar(){
+	    limpar();
+            listaCompras.forEach(item => {
+                listaUL.innerHTML += "<li>"+item+"</li>";
+                
+            });
+        }
+        function apagar(){
+            listaCompras.pop();
+            limpar();
+            listar();
+        }
+
+    </script>
+        
     </div>
 
 
